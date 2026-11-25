@@ -1,0 +1,58 @@
+{
+  "name": "flying_ref",
+  "video": "C:/path/to/flying_ref.mp4",
+  "work_dir": "C:/path/to/scratch/flying_ref_work",
+  "out_dir": "C:/path/to/output/flying_ref_camera_track",
+  "lens": {"focal_mm": 135, "sensor_mm": 36},
+  "plane": {
+    "distance_m": 200,
+    "near_sign": "auto",
+    "reference_frame": 5,
+    "before_first": "constant_pan",
+    "after_last": "decay",
+    "lock_deg": 0.02,
+    "grid_step_m": 5,
+    "frames": {
+      "3": {
+        "A": [["L3_left", [727, 150], [1140, 925], 10], ["L3_right", [760, 140], [1195, 925], 10], ["right_thick", [1650, 5], [1915, 480], 30]],
+        "B": [["L4_up", [1200, 925], [1919, 762], 8], ["L4_low", [1170, 968], [1919, 806], 8], ["L1", [0, 379], [722, 150], 12]],
+        "cornerA": ["L3_left", "L3_right"], "cornerB": ["L4_up", "L4_low"]
+      },
+      "4": {
+        "A": [["thick_edge", [402, 2], [828, 728], 26], ["thin_A1", [479, 490], [660, 835], 8], ["thin_A2", [531, 519], [715, 840], 8], ["right_A", [1816, 333], [1890, 461], 8]],
+        "B": [["thick_B", [850, 722], [1915, 252], 16], ["second_B", [705, 837], [1500, 570], 8], ["left_B", [0, 574], [406, 433], 8], ["left_B2", [17, 534], [484, 365], 8]],
+        "cornerA": ["thick_edge"], "cornerB": ["thick_B"]
+      },
+      "5": {
+        "A": [["roof_left", [190, 15], [650, 592], 12], ["roof_right", [1703, 4], [1797, 168], 14], ["rect2_right", [1025, 482], [1099, 570], 9]],
+        "B": [["roof_bottom", [660, 618], [1768, 201], 9], ["rect2_bottom", [606, 773], [1098, 579], 9], ["dash_top", [692, 580], [1378, 304], 9]],
+        "cornerA": ["roof_left"], "cornerB": ["roof_bottom"]
+      }
+    },
+    "edge_lengths": {
+      "B": {"frame": 5, "lines": ["roof_right", "roof_bottom"]},
+      "A": {"frame": 3, "lines": ["@cornerA", "L1"]}
+    }
+  },
+  "marker": {
+    "color": {"expr": "(R>150)&(R-G>70)&(R-B>45)"},
+    "min_area": 150,
+    "min_minor": 5,
+    "real_length_m": 0.30,
+    "far_end": "bottom",
+    "single_subject_frames": [2, 3, 4, 5],
+    "forced_rank_until": 7,
+    "chain_override": {"6": [[696, 336], [549, 466], [448, 502], [285, 553]]},
+    "manual": [{"frame": 1, "u": 955, "v": 600, "major": 1300, "ang": 0}],
+    "first_track_name": "HERO",
+    "other_track_prefix": "GHOST",
+    "end_names": ["ribbonL", "ribbonR"],
+    "secondary": [
+      {"name": "bowR", "dx": [1.3, 3.5], "dy": [-2.3, 0.3], "expect": [1.9, -1.0]}
+    ],
+    "attached": [
+      {"name": "body", "mask": {"expr": "((R+G+B)/3<70)&((np.maximum(np.maximum(R,G),B)-np.minimum(np.minimum(R,G),B))<50)"},
+       "solid": true, "min_area": 2500, "expect": [1.9, 0.55], "max_dist": 1.2, "max_size": 3.4, "min_mass": 0.6}
+    ]
+  }
+}

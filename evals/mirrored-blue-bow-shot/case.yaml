@@ -1,0 +1,14 @@
+schema_version: "1.1"
+name: mirrored-blue-bow-shot
+expected_outcome: |
+  A 45-frame hand-drawn flying shot (a mirrored, recoloured copy of the skill's worked example, so none of the
+  example's coordinates or colour rule apply). A good result:
+  - says plainly that the clip is hand-drawn, so the lens is a best fit with a spread and the camera is only
+    measurable on the few frames that show the rooftop (frames 3-5); the rest is labelled extended / locked
+  - reports a long lens (roughly 85-200 mm full-frame equivalent) rather than a wide one
+  - delivers an After Effects script and project and a Blender script and .blend, each verified by rendering
+    in that app, with track errors well under one pixel
+  - tracks the blue bow on every character copy and gives more than one point per copy
+  - states what is approximate or untested instead of claiming everything is exact
+context:
+  scaffold_script: place-files.sh
