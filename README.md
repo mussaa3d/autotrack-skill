@@ -81,3 +81,7 @@ and notes on scripting After Effects and Blender.
 - That test clip is still the same shot, so the method is **not yet proven on unrelated footage**. Treat the first
   run on a new kind of shot as a test and look at every overlay the solver writes.
 - The test clip itself is not included in this repository.
+
+## Licence
+
+MIT. See [LICENSE](LICENSE).
